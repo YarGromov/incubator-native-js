@@ -1,5 +1,14 @@
 import {mult, splitIntoWords, sum} from "./01";
 
+let a: number
+let b: number
+let c: number
+
+beforeEach(()=>{
+    a: 1
+    b: 2
+    c: 3
+})
 
 test('sum should be correct', ()=>{
     //data
