@@ -16,6 +16,6 @@ export function makeStudentActive(stud: StudentType) {
     stud.isActive = true;
 }
 
-export function isLive(st: StudentType, city: string){
-    st.address.city.title = city
+export function doesStudentLiveIn(student: StudentType, cityName: string){
+   return student.address.city.title === cityName
 }
