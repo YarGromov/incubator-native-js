@@ -1,8 +1,12 @@
+import {student, StudentType} from "../02-object/02";
+
 export const sum = (a: number, b: number) => {
     return a + b
 }
 
-let res = sum(sum(1, 2), sum(3, 5))
-
-
-
+export const  addSkill = (student: StudentType, skill: string) => {
+    student.technologies.push({
+        id: new Date().getTime(),
+        title: 'JS'
+    })
+}

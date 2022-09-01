@@ -3,12 +3,11 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import {sum} from "./03-functions/03";
 
 
 
-let res = sum(sum(1, 2), sum(5, 5))
-console.log(res)
+
+
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
