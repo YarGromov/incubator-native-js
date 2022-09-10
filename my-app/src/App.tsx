@@ -1,5 +1,6 @@
 import React from 'react';
 import './App.css';
+import {User} from "./06-callbacks/06-callbacks";
 
 function App() {
 
@@ -13,9 +14,7 @@ function App() {
     const liElements = users.map((u, index)=> <li key={index}>{index} - {u.name}</li>)
   return (
     <div className="App">
-      <ul>
-          {liElements}
-      </ul>
+      <User/>
     </div>
   );
 }

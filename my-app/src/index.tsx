@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import {User} from "./06-callbacks/06-callbacks";
 
 
 
@@ -15,7 +14,7 @@ const root = ReactDOM.createRoot(
 );
 root.render(
   <React.StrictMode>
-    <User />
+    <App />
   </React.StrictMode>
 );
 
