@@ -9,7 +9,7 @@ export const usersObj = {
 
 
 
-let user = {id: 100500, name: 'Igor'}
+// let user = {id: 100500, name: 'Igor'}
 
 // users[user.id] = user;
 
