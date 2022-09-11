@@ -90,3 +90,33 @@ test('reference type test', () => {
 
 
 })
+
+test('reference type array test', () => {
+
+    const address = {
+            title: 'Minsk City'
+    }
+
+    let user1: User1Type = {
+        name: 'Dimych',
+        age: 32,
+        address: address
+    }
+
+    let user2: User1Type = {
+        name: 'Natasha',
+        age: 30,
+        address: address
+    }
+
+    const users = [user1, user2, {name: 'Misha', age: 4, address}];
+
+    const admins = [user1, user2]
+
+    admins[0].name = 'Dmitriy';
+
+    expect(admins[0].name).toBe('Dmitriy')
+    expect(users[0].name).toBe('Dmitriy')
+    expect(user1.name).toBe('Dmitriy')
+
+})
