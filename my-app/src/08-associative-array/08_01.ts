@@ -5,20 +5,13 @@ export const usersObj = {
     '3': 'Katya'
 }
 
-type UsersType = {
-    [key: string]: {id: number, name: string}
-}
 
-export const users: UsersType = {
-    '101': {id: 101, name: 'Dimych'},
-    '1234501': {id: 1234501, name: 'Natasha'},
-    '1025431': {id: 1025431, name: 'Valera'},
-    '155401': {id: 155401, name: 'Katya'}
-}
+
+
 
 let user = {id: 100500, name: 'Igor'}
 
-users[user.id] = user;
+// users[user.id] = user;
 
 export const usersArray = [
     {id: 101, name: 'Dimych'},
