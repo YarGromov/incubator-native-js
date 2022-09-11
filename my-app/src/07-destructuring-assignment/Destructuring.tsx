@@ -18,8 +18,9 @@ type DestructuringPropsType = {
     car: {model: string}
 }
 
-export const Destructuring: React.FC<DestructuringPropsType> = ({title, man, ...props}) => {
+export const Destructuring: React.FC<DestructuringPropsType> = (props) => {
 
+    const {title, man, ...restProps} = props;
 
     return (
         <div>
@@ -30,6 +31,9 @@ export const Destructuring: React.FC<DestructuringPropsType> = ({title, man, ...
             </div>
             <div>
                 {man.name}
+            </div>
+            <div>
+                {restProps.food}
             </div>
         </div>
     );
