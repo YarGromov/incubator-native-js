@@ -2,6 +2,7 @@ export type UserType = {
     name: string
     hair: number
     address: { title: string }
+
 }
 export type LaptopType = {
     title: string
@@ -20,3 +21,12 @@ export function makeHairstyle(u: UserType, power: number) {
     return copy
 }
 
+export function upgradeUserLaptop(u: UserWithLaptopType, laptop:LaptopType){
+    return {
+        ...u,
+        laptop: {
+            ...u.laptop,
+            title: laptop
+        }
+    }
+}
