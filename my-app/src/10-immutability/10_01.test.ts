@@ -1,4 +1,4 @@
-import {makeHairstyle, upgradeUserLaptop, UserWithLaptopType} from "./10_01";
+import {addNewBooksToUser, makeHairstyle, upgradeUserLaptop, UserWithBooksType, UserWithLaptopType} from "./10_01";
 
 
 
@@ -34,7 +34,7 @@ test('upgrade laptop to Macbook', () => {
             title: 'Zenbook'
         }
     }
-    const userCopy  = upgradeUserLaptop(user, 'Mackbook');
+    const userCopy  = upgradeUserLaptop(user,  "Mackbook");
 
     expect(user).not.toBe(userCopy)
     expect(user.address).toBe(userCopy.address)
@@ -43,3 +43,28 @@ test('upgrade laptop to Macbook', () => {
     expect(user.laptop.title).toBe('Zenbook')
 
 })
+
+test('add new books to user', () => {
+
+    let user: UserWithLaptopType & UserWithBooksType = {
+        name: 'Dimych',
+        hair: 32,
+        address: {
+            title: 'Minsk'
+        },
+        laptop: {
+            title: 'Zenbook'
+        },
+        books: ['html', 'css', 'js', 'react']
+    }
+    const userCopy  = addNewBooksToUser(user,  'ts');
+
+    expect(user).not.toBe(userCopy)
+    expect(user.laptop).toBe(userCopy.laptop)
+    expect(user.address).toBe(userCopy.address)
+    expect(user.books).not.toBe(userCopy.books)
+    expect(userCopy.books[4]).toBe('ts')
+    // expect(userCopy.books[5]).toBe('rest api')
+
+})
+
