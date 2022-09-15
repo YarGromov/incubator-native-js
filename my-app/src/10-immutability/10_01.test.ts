@@ -1,4 +1,11 @@
-import {addNewBooksToUser, makeHairstyle, upgradeUserLaptop, UserWithBooksType, UserWithLaptopType} from "./10_01";
+import {
+    addNewBooksToUser,
+    makeHairstyle,
+    updateBook,
+    upgradeUserLaptop,
+    UserWithBooksType,
+    UserWithLaptopType
+} from "./10_01";
 
 
 
@@ -68,3 +75,26 @@ test('add new books to user', () => {
 
 })
 
+test('update js to ts', () => {
+
+    let user: UserWithLaptopType & UserWithBooksType = {
+        name: 'Dimych',
+        hair: 32,
+        address: {
+            title: 'Minsk'
+        },
+        laptop: {
+            title: 'Zenbook'
+        },
+        books: ['html', 'css', 'js', 'react']
+    }
+    const userCopy  = updateBook(user, 'js',  'ts');
+
+    expect(user).not.toBe(userCopy)
+    expect(user.laptop).toBe(userCopy.laptop)
+    expect(user.address).toBe(userCopy.address)
+    expect(user.books).not.toBe(userCopy.books)
+    expect(userCopy.books[2]).toBe('ts')
+
+
+})

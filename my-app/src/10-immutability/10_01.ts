@@ -35,13 +35,24 @@ export function upgradeUserLaptop(u: UserWithLaptopType, laptop: string){
     }
 }
 
-export function addNewBooksToUser(u: UserWithBooksType,book: string){
+export function addNewBooksToUser(u: UserWithBooksType & UserWithLaptopType,book: string){
     return {
         ...u,
         books: [
             ...u.books,
             book
         ]
-
     }
 }
+
+export function (u: UserWithBooksType & UserWithLaptopType,book: string, updateBook: string){
+    return {
+        ...u,
+        books: [
+            ...u.books,
+            books
+        ]
+    }
+}
+
+// 58
