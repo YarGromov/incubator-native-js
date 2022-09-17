@@ -45,14 +45,16 @@ export function addNewBooksToUser(u: UserWithBooksType & UserWithLaptopType,book
     }
 }
 
-export function (u: UserWithBooksType & UserWithLaptopType,book: string, updateBook: string){
+export function updateBook(u: UserWithBooksType & UserWithLaptopType,oldBook: string, newBook: string){
     return {
         ...u,
-        books: [
-            ...u.books,
-            books
-        ]
+        books: u.books.map(b=> {
+            if( b === oldBook) {
+                return newBook
+            } else {
+                return b
+            }
+        })
     }
 }
-
 // 58
