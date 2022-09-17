@@ -1,3 +1,6 @@
+import {Simulate} from "react-dom/test-utils";
+
+
 export type UserType = {
     name: string
     hair: number
@@ -14,6 +17,10 @@ export type UserWithLaptopType = UserType & {
 
 export type UserWithBooksType = UserType & {
     books: Array<string>
+}
+
+export type WithCompanyType = {
+    companies: Array<{id: number, title: string}>
 }
 
 
@@ -57,4 +64,14 @@ export function removeBook(u: UserWithBooksType & UserWithLaptopType, bookForDel
         ...u,
         books: u.books.filter(b => b !== bookForDelete)
     }
+}
+
+export const updateCompanyTitle = (user: WithCompanyType,companyID: number, companyTitle: string) => {
+    const copy: WithCompanyType = {
+        ...user,
+        companies: user.companies.map(c => c.id === companyID
+        ? {...c, title: companyTitle}
+        : c)
+    }
+    return copy
 }

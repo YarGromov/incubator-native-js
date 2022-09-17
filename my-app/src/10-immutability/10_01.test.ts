@@ -1,10 +1,10 @@
 import {
     addNewBooksToUser,
     makeHairstyle, removeBook,
-    updateBook,
+    updateBook, updateCompanyTitle,
     upgradeUserLaptop,
     UserWithBooksType,
-    UserWithLaptopType
+    UserWithLaptopType, WithCompanyType
 } from "./10_01";
 
 
@@ -117,4 +117,25 @@ test('remove js', () => {
     expect(user.address).toBe(userCopy.address)
     expect(user.books).not.toBe(userCopy.books)
     expect(userCopy.books[2]).toBe('react')
+})
+
+test('with companies', () => {
+
+    let user: UserWithLaptopType & WithCompanyType = {
+        name: 'Dimych',
+        hair: 32,
+        address: {
+            title: 'Minsk'
+        },
+        laptop: {
+            title: 'Zenbook'
+        },
+        companies: [{id: 1, title: 'епам'},{id: 2, title: 'IT-INCUBATOR'}]
+    }
+    const userCopy = updateCompanyTitle(user, 1, 'EPAM') as  UserWithLaptopType & WithCompanyType;
+
+    expect(user).not.toBe(userCopy)
+    expect(user.address).toBe(userCopy.address)
+    expect(user.companies).not.toBe(userCopy.companies)
+    expect(userCopy.companies[0].title).toBe('EPAM')
 })
