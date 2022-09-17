@@ -1,6 +1,6 @@
 import {
     addNewBooksToUser,
-    makeHairstyle,
+    makeHairstyle, removeBook,
     updateBook,
     upgradeUserLaptop,
     UserWithBooksType,
@@ -95,6 +95,26 @@ test('update js to ts', () => {
     expect(user.address).toBe(userCopy.address)
     expect(user.books).not.toBe(userCopy.books)
     expect(userCopy.books[2]).toBe('ts')
+})
 
+test('remove js', () => {
 
+    let user: UserWithLaptopType & UserWithBooksType = {
+        name: 'Dimych',
+        hair: 32,
+        address: {
+            title: 'Minsk'
+        },
+        laptop: {
+            title: 'Zenbook'
+        },
+        books: ['html', 'css', 'js', 'react']
+    }
+    const userCopy  = removeBook(user, 'js');
+
+    expect(user).not.toBe(userCopy)
+    expect(user.laptop).toBe(userCopy.laptop)
+    expect(user.address).toBe(userCopy.address)
+    expect(user.books).not.toBe(userCopy.books)
+    expect(userCopy.books[2]).toBe('react')
 })
