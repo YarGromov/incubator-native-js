@@ -2,7 +2,7 @@ import {
     addNewBooksToUser,
     makeHairStyle,
     moveUser,
-    moveUserToOtherHouse,
+    moveUserToOtherHouse, updateBook,
     upgradeUserLaptop,
     UserType,
     UserWithBooksType,
@@ -114,4 +114,23 @@ test('move new books to user', ()=>{
     expect(userCopy.books.length).toBe(6)
     expect(userCopy.books[4]).toBe('ts')
     expect(userCopy.books[5]).toBe('restApi')
+})
+
+test('update books to user', ()=>{
+    let user: UserWithLaptopType & UserWithBooksType  = {
+        name: 'Dimych',
+        hair: 32,
+        address: {
+            city: 'Minsk',
+            house: 12
+        },
+        laptop: {
+            title: 'ZenBook'
+        },
+        books: ['css','html','js','react']
+    }
+    const userCopy = updateBook(user, 'js', 'ts');
+
+    expect(user).not.toBe(userCopy)
+    expect(userCopy.books[2]).toBe('ts')
 })

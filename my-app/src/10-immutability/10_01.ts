@@ -57,10 +57,17 @@ export function upgradeUserLaptop(u: UserWithLaptopType, mackbook: string) {
     }
 }
 
-export function addNewBooksToUser(u: UserWithLaptopType & UserWithBooksType, books: Array<string>) {
+export function addNewBooksToUser(u: UserWithLaptopType & UserWithBooksType, newBooks: Array<string>) {
     return {
         ...u,
-       books: [...u.books, ...books]
+       books: [...u.books, ...newBooks]
+    }
+}
+
+export function updateBook(u: UserWithLaptopType & UserWithBooksType, oldBook: string, newBook: string) {
+    return {
+      ...u,
+        books: u.books.map(b => b === oldBook ? b = newBook : '')
     }
 }
 
