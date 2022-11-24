@@ -67,10 +67,16 @@ export function addNewBooksToUser(u: UserWithLaptopType & UserWithBooksType, new
 export function updateBook(u: UserWithLaptopType & UserWithBooksType, oldBook: string, newBook: string) {
     return {
       ...u,
-        books: u.books.map(b => b === oldBook ? b = newBook : '')
+        books: u.books.map(b => b === oldBook ? b = newBook : b)
     }
 }
 
+export function removeBook(u: UserWithLaptopType & UserWithBooksType, removedBook: string) {
+    return {
+        ...u,
+        books: u.books.filter(b => b !== removedBook)
+    }
+}
 
 
 
