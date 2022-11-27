@@ -2,18 +2,16 @@ import {
     addNewBooksToUser,
     makeHairStyle,
     moveUser,
-    moveUserToOtherHouse, removeBook, updateBook,
+    moveUserToOtherHouse, removeBook, updateBook, updateSkills,
     upgradeUserLaptop,
     UserType,
     UserWithBooksType,
-    UserWithLaptopType
+    UserWithLaptopType, UserWithSkillsType
 } from "./10_01";
 import exp from "constants";
 
 
-
-
-test('reference type test', ()=>{
+test('reference type test', () => {
     let user: UserType = {
         name: 'Dimych',
         hair: 32,
@@ -21,7 +19,7 @@ test('reference type test', ()=>{
             city: 'Minsk'
         }
     }
-  const awesomeUser = makeHairStyle(user, 2);
+    const awesomeUser = makeHairStyle(user, 2);
 
     expect(user.hair).toBe(32)
     expect(awesomeUser.hair).toBe(16)
@@ -29,7 +27,7 @@ test('reference type test', ()=>{
 
 })
 
-test('change address', ()=>{
+test('change address', () => {
     let user: UserWithLaptopType = {
         name: 'Dimych',
         hair: 32,
@@ -51,7 +49,7 @@ test('change address', ()=>{
     expect(movedUser.address.house).toBe(10)
 })
 
-test('upgrade laptop to Mackbook', ()=>{
+test('upgrade laptop to Mackbook', () => {
     let user: UserWithLaptopType = {
         name: 'Dimych',
         hair: 32,
@@ -73,8 +71,8 @@ test('upgrade laptop to Mackbook', ()=>{
     expect(user.laptop.title).toBe('ZenBook')
 })
 
-test('move User To Other House', ()=>{
-    let user: UserWithLaptopType & UserWithBooksType  = {
+test('move User To Other House', () => {
+    let user: UserWithLaptopType & UserWithBooksType = {
         name: 'Dimych',
         hair: 32,
         address: {
@@ -84,7 +82,7 @@ test('move User To Other House', ()=>{
         laptop: {
             title: 'ZenBook'
         },
-        books: ['css','html','js','react']
+        books: ['css', 'html', 'js', 'react']
 
     }
     const userCopy = moveUserToOtherHouse(user, 13);
@@ -95,8 +93,8 @@ test('move User To Other House', ()=>{
 
 })
 
-test('move new books to user', ()=>{
-    let user: UserWithLaptopType & UserWithBooksType  = {
+test('move new books to user', () => {
+    let user: UserWithLaptopType & UserWithBooksType = {
         name: 'Dimych',
         hair: 32,
         address: {
@@ -106,9 +104,9 @@ test('move new books to user', ()=>{
         laptop: {
             title: 'ZenBook'
         },
-        books: ['css','html','js','react']
+        books: ['css', 'html', 'js', 'react']
     }
-    const userCopy = addNewBooksToUser(user, ['ts','restApi']);
+    const userCopy = addNewBooksToUser(user, ['ts', 'restApi']);
 
     expect(user).not.toBe(userCopy)
     expect(userCopy.books.length).toBe(6)
@@ -116,8 +114,8 @@ test('move new books to user', ()=>{
     expect(userCopy.books[5]).toBe('restApi')
 })
 
-test('update books to user', ()=>{
-    let user: UserWithLaptopType & UserWithBooksType  = {
+test('update books to user', () => {
+    let user: UserWithLaptopType & UserWithBooksType = {
         name: 'Dimych',
         hair: 32,
         address: {
@@ -127,7 +125,7 @@ test('update books to user', ()=>{
         laptop: {
             title: 'ZenBook'
         },
-        books: ['css','html','js','react']
+        books: ['css', 'html', 'js', 'react']
     }
     const userCopy = updateBook(user, 'js', 'ts');
 
@@ -135,8 +133,8 @@ test('update books to user', ()=>{
     expect(userCopy.books[2]).toBe('ts')
 })
 
-test('remove book ', ()=>{
-    let user: UserWithLaptopType & UserWithBooksType  = {
+test('remove book ', () => {
+    let user: UserWithLaptopType & UserWithBooksType = {
         name: 'Dimych',
         hair: 32,
         address: {
@@ -146,10 +144,31 @@ test('remove book ', ()=>{
         laptop: {
             title: 'ZenBook'
         },
-        books: ['css','html','js','react']
+        books: ['css', 'html', 'js', 'react']
     }
     const userCopy = removeBook(user, 'js');
 
     expect(user).not.toBe(userCopy)
     expect(userCopy.books[2]).toBe('react')
+})
+
+test('update skills to user', () => {
+    let user: UserWithLaptopType & UserWithBooksType & UserWithSkillsType = {
+        name: 'Dimych',
+        hair: 32,
+        address: {
+            city: 'Minsk',
+            house: 12
+        },
+        laptop: {
+            title: 'ZenBook'
+        },
+        books: ['css', 'html', 'js', 'react'],
+        skills: [1, 43, 54, 60]
+    }
+    const userCopy = updateSkills(user, 54, 70);
+
+    expect(user).not.toBe(userCopy)
+    expect(user.skills).not.toBe(userCopy.skills)
+    expect(userCopy.skills[2]).toBe(70)
 })
