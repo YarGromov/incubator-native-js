@@ -1,8 +1,8 @@
 import {
-    addNewBooksToUser,
+    addNewBooksToUser, CompaniesType,
     makeHairStyle,
     moveUser,
-    moveUserToOtherHouse, removeBook, updateBook, updateSkills,
+    moveUserToOtherHouse, removeBook, updateBook, updateCopmanies, updateCopmanyTitle, updateSkills,
     upgradeUserLaptop,
     UserType,
     UserWithBooksType,
@@ -152,7 +152,7 @@ test('remove book ', () => {
     expect(userCopy.books[2]).toBe('react')
 })
 
-test('update skills to user', () => {
+test(' ', () => {
     let user: UserWithLaptopType & UserWithBooksType & UserWithSkillsType = {
         name: 'Dimych',
         hair: 32,
@@ -172,3 +172,57 @@ test('update skills to user', () => {
     expect(user.skills).not.toBe(userCopy.skills)
     expect(userCopy.skills[2]).toBe(70)
 })
+
+test('update companies', () => {
+    let user: UserWithLaptopType & UserWithBooksType & CompaniesType = {
+        name: 'Dimych',
+        hair: 32,
+        address: {
+            city: 'Minsk',
+            house: 12
+        },
+        laptop: {
+            title: 'ZenBook'
+        },
+        books: ['css', 'html', 'js', 'react'],
+        companies: [{id: 1, title: 'epam'}, {id: 2, title: 'IT-INCUBATOR'}]
+
+    }
+    const userCopy = updateCopmanies(user, {id: 3, title: 'IsSoft'});
+
+    expect(user).not.toBe(userCopy)
+    expect(userCopy.companies.length).toBe(3)
+    expect(userCopy.companies[2].id).toBe(3)
+})
+
+test('update company title', () => {
+    let user: UserWithLaptopType & UserWithBooksType & CompaniesType = {
+        name: 'Dimych',
+        hair: 32,
+        address: {
+            city: 'Minsk',
+            house: 12
+        },
+        laptop: {
+            title: 'ZenBook'
+        },
+        books: ['css', 'html', 'js', 'react'],
+        companies: [{id: 1, title: 'епам'}, {id: 2, title: 'IT-INCUBATOR'}]
+
+    }
+    const userCopy = updateCopmanyTitle(user, 1, 'EPAM');
+
+    expect(user).not.toBe(userCopy)
+    expect(userCopy.companies[0].title).toBe('EPAM')
+})
+
+
+
+
+
+
+
+
+
+
+
