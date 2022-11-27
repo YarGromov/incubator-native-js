@@ -108,9 +108,24 @@ export function updateCopmanyTitle(u: CompaniesType, companyID: number, newTitle
     } as CompaniesType
 }
 
+export const updateCopmanyTitle2 = (companies: {[key: string]: Array<{id: number, title: string}>},
+                                    userName: string,
+                                    companyId: number,
+                                    newTitle: string
+                                    ) => {
+    let companyCopy = {...companies};
+    companyCopy[userName] = companyCopy[userName].map(c => c.id === companyId
+    ? {...c, title: newTitle} : c
+    )
+    return companyCopy
+}
 
 
 
-
-
+// let man4FullCopy = {
+//     ...man4,
+//     mother: {...man4.mother, work: {
+//             ...man4.mother.work
+//         }}
+// }
 

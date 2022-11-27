@@ -1,14 +1,22 @@
 import {
-    addNewBooksToUser, CompaniesType,
+    addNewBooksToUser,
+    CompaniesType,
     makeHairStyle,
     moveUser,
-    moveUserToOtherHouse, removeBook, updateBook, updateCopmanies, updateCopmanyTitle, updateSkills,
+    moveUserToOtherHouse,
+    removeBook,
+    updateBook,
+    updateCopmanies,
+    updateCopmanyTitle,
+    updateCopmanyTitle2,
+    updateSkills,
     upgradeUserLaptop,
     UserType,
     UserWithBooksType,
-    UserWithLaptopType, UserWithSkillsType
+    UserWithLaptopType,
+    UserWithSkillsType
 } from "./10_01";
-import exp from "constants";
+
 
 
 test('reference type test', () => {
@@ -216,7 +224,17 @@ test('update company title', () => {
     expect(userCopy.companies[0].title).toBe('EPAM')
 })
 
+test('update company', () => {
+    let companies = {
+        "Dimych": [{id: 1, title: 'епам'}, {id: 2, title: 'IT-INCUBATOR'}],
+        "Artem": [{id: 2, title: 'IT-INCUBATOR'}]
+    }
 
+    let copyCompany = updateCopmanyTitle2(companies, "Dimych", 1, 'EPAM')
+
+    expect(copyCompany["Dimych"][0].title).toBe('EPAM')
+
+})
 
 
 
